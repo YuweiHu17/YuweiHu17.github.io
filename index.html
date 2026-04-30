@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Yuwei Hu — PhD student at Dartmouth Engineering working on optimization, information design, Bayesian congestion games, and networked systems." />
+  <title>Yuwei Hu</title>
+  <style>
+    :root {
+      --bg: #f7f4ed;
+      --paper: #fffdf8;
+      --text: #2f2f2f;
+      --muted: #6f6a61;
+      --accent: #0e6e55;
+      --accent-soft: #e7f2ed;
+      --gold: #a16f0b;
+      --line: #e5ded0;
+      --shadow: 0 18px 45px rgba(63, 55, 42, 0.09);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(14, 110, 85, 0.08), transparent 34%),
+        radial-gradient(circle at 90% 8%, rgba(161, 111, 11, 0.10), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.58;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(14, 110, 85, 0.25);
+    }
+
+    a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    .site {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+      background: rgba(247, 244, 237, 0.88);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 1.28rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+      border-bottom: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 0.98rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      border-bottom: none;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    main {
+      padding: 44px 0 80px;
+      display: grid;
+      grid-template-columns: 330px 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .profile {
+      position: sticky;
+      top: 92px;
+      background: rgba(255, 253, 248, 0.92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      text-align: center;
+    }
+
+    .portrait {
+      width: 184px;
+      height: 184px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      border: 6px solid #fff;
+      box-shadow: 0 10px 30px rgba(63, 55, 42, 0.18);
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--accent);
+      font-size: 2.05rem;
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      margin: 8px 0 18px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .contact {
+      display: grid;
+      gap: 8px;
+      text-align: left;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-size: 0.98rem;
+    }
+
+    .contact span {
+      color: var(--muted);
+      margin-right: 6px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .tag {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(14, 110, 85, 0.13);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.82rem;
+    }
+
+    .content {
+      display: grid;
+      gap: 26px;
+    }
+
+    section {
+      background: rgba(255, 253, 248, 0.92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px;
+      scroll-margin-top: 92px;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      color: var(--accent);
+      font-size: 1.55rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2::after {
+      content: "";
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.45;
+      flex: 1;
+      margin-left: 8px;
+    }
+
+    p { margin: 0 0 14px; }
+
+    .lead {
+      font-size: 1.04rem;
+    }
+
+    .interest-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .interest {
+      border-left: 4px solid var(--accent);
+      background: #fbf8f1;
+      padding: 12px 14px;
+      border-radius: 12px;
+    }
+
+    .item {
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .item:first-of-type { border-top: none; padding-top: 0; }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+
+    .item-title {
+      font-weight: 700;
+      font-size: 1.06rem;
+      color: #272727;
+    }
+
+    .item-meta {
+      color: var(--muted);
+      white-space: nowrap;
+      font-size: 0.94rem;
+    }
+
+    .authors, .description {
+      font-size: 0.98rem;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    .authors { color: var(--muted); }
+
+    .badge {
+      display: inline-block;
+      background: #fff5e6;
+      color: var(--gold);
+      border: 1px solid rgba(161, 111, 11, 0.18);
+      padding: 2px 9px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .keywords {
+      color: var(--accent);
+      font-style: italic;
+      font-size: 0.92rem;
+      margin-top: 6px;
+    }
+
+    .news-list, .compact-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .news-list li, .compact-list li {
+      margin: 8px 0;
+      padding-left: 4px;
+    }
+
+    .education-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .degree {
+      background: #fbf8f1;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .degree-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .degree-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+
+    footer {
+      color: var(--muted);
+      text-align: center;
+      padding: 24px 0 44px;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 880px) {
+      .nav { height: auto; padding: 16px 0; align-items: flex-start; }
+      .nav-links { justify-content: flex-end; gap: 12px; }
+      main {
+        grid-template-columns: 1fr;
+        padding-top: 24px;
+      }
+      .profile {
+        position: static;
+      }
+      .item-header, .degree-top {
+        display: block;
+      }
+      .item-meta {
+        white-space: normal;
+        margin-top: 3px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .site { width: min(100% - 24px, 1180px); }
+      section, .profile { padding: 22px; }
+      .nav { display: block; }
+      .nav-links { margin-top: 10px; justify-content: flex-start; }
+      h1 { font-size: 1.8rem; }
+      .portrait { width: 158px; height: 158px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="site nav" aria-label="Primary navigation">
+      <a class="brand" href="#">Yuwei Hu</a>
+      <div class="nav-links">
+        <a href="#about">About Me</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="site">
+    <aside class="profile">
+      <img class="portrait" src="assets/profile.jpg" alt="Yuwei Hu profile photo" />
+      <h1>Yuwei Hu</h1>
+      <div class="subtitle">PhD Student · Dartmouth Engineering</div>
+
+      <div class="contact">
+        <div><span>Email:</span><a href="mailto:yuwei.hu-2.th@dartmouth.edu">yuwei.hu-2.th@dartmouth.edu</a></div>
+        <div><span>Location:</span>Hanover, NH, USA</div>
+        <div><span>GitHub:</span><a href="https://github.com/YuweiHu17">YuweiHu17</a></div>
+        <div><span>Scholar:</span><a href="https://scholar.google.com/citations?hl=en&user=3L-LlwoAAAAJ">Google Scholar</a></div>
+        <div><span>Advisor:</span><a href="https://brycelferguson.github.io">Prof. Bryce L. Ferguson</a></div>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Optimization</span>
+        <span class="tag">Information Design</span>
+        <span class="tag">Networked Systems</span>
+        <span class="tag">Multi-Agent Systems</span>
+      </div>
+    </aside>
+
+    <div class="content">
+      <section id="about">
+        <h2>About Me</h2>
+        <p class="lead">
+          I am a PhD student in Thayer Engineering at Dartmouth College, advised by
+          <a href="https://brycelferguson.github.io">Prof. Bryce L. Ferguson</a>.
+          My research focuses on optimization and decision-making under uncertainty, with particular interest in
+          information design, Bayesian congestion games, multi-agent systems, and networked systems.
+        </p>
+        <p>
+          Before Dartmouth, I received my M.S. in Applied Statistics from the University of Michigan.
+          I collaborated with <a href="https://aero.engin.umich.edu/people/li-max/">Prof. Max Z. Li</a>
+          on air traffic management and geospatial network optimization,
+          with <a href="https://sph.umich.edu/faculty-profiles/zeng-donglin.html">Prof. Donglin Zeng</a>
+          on longitudinal health data analysis and behavioral statistics, and with
+          <a href="https://yuekai.github.io">Prof. Yuekai Sun</a>
+          on causal inference and synthetic control methods. I also hold a B.Sc. in Statistics
+          from Zhongnan University of Economics and Law.
+        </p>
+
+        <div class="interest-list">
+          <div class="interest">
+            <strong>Information design and multi-agent systems.</strong>
+            I study how planners can design recommendations that remain incentive-compatible when users may hold heterogeneous beliefs.
+          </div>
+          <div class="interest">
+            <strong>Optimization for transportation systems.</strong>
+            I work on safe and scalable optimization methods for congestion, air traffic management, and multi-agent coordination.
+          </div>
+          <div class="interest">
+            <strong>Statistical modeling for networked and health systems.</strong>
+            My previous work includes mixed-effects modeling, longitudinal data analysis, and synthetic control methods.
+          </div>
+        </div>
+      </section>
+
+      <section id="news">
+        <h2>News</h2>
+        <ul class="news-list">
+          <li><strong>2026.</strong> Submitted “Robust Obedience in Information Design for Bayesian Congestion Games” to CDC 2026.</li>
+          <li><strong>2026.</strong> “Provably Safe Optimization of Arrival Flows into Terminal Airspace” selected for AIAA AVIATION Forum 2026 Student Paper Competition.</li>
+          <li><strong>2026.</strong> Collaborative work on temporal variation in psychosocial factors and physical activity among heart failure patients appeared in <em>Circulation: Heart Failure</em>.</li>
+          <li><strong>2025.</strong> Started PhD study in Thayer Engineering at Dartmouth College.</li>
+        </ul>
+      </section>
+
+      <section id="publications">
+        <h2>Selected Publications</h2>
+
+        <article class="item">
+          <div class="item-header">
+            <div class="item-title">
+              Robust Obedience in Information Design for Bayesian Congestion Games
+              <span class="badge">CDC 2026 Submission</span>
+            </div>
+            <div class="item-meta"><a href="https://arxiv.org/pdf/2604.10831">Paper</a></div>
+          </div>
+          <div class="authors"><strong>Yuwei Hu</strong>, Bryce L. Ferguson</div>
+          <div class="description">
+            Developed a robust information-design framework for Bayesian congestion games with heterogeneous user beliefs.
+            Characterized feasibility of robust obedience constraints, derived computable robustness certificates, and analyzed the value impact of stronger robustness requirements.
+          </div>
+          <div class="keywords">Information Design · Bayesian Congestion Games · Robust Obedience · Heterogeneous Priors · Distributional Robustness</div>
+        </article>
+
+        <article class="item">
+          <div class="item-header">
+            <div class="item-title">
+              Provably Safe Optimization of Arrival Flows into Terminal Airspace
+              <span class="badge">AIAA AVIATION Forum 2026</span>
+            </div>
+            <div class="item-meta"><a href="https://github.com/szdane/FAA-Fast-UMich">Code</a></div>
+          </div>
+          <div class="authors">Serra Dane, Kuang Sun, <strong>Yuwei Hu</strong>, Eric Boccaccio, Adrian Nomi, Joshua Glottmann, Jean-Baptiste Jeannin, Max Z. Li</div>
+          <div class="description">
+            Developed a provably safe optimization framework for sequencing and scheduling arrival flows in terminal airspace.
+            Formulated the problem under safety-critical dynamic constraints and demonstrated scalable multi-agent coordination in high-density traffic scenarios.
+          </div>
+          <div class="keywords">Safe Optimization · Air Traffic Management · Multi-Agent Systems · Constrained Control · Robust Scheduling</div>
+        </article>
+
+        <article class="item">
+          <div class="item-header">
+            <div class="item-title">Temporal Variation in Psychosocial Factors and Physical Activity Levels Among Patients With Heart Failure</div>
+            <div class="item-meta"><a href="https://pubmed.ncbi.nlm.nih.gov/41332378">Link</a></div>
+          </div>
+          <div class="authors">Jessica R. Golbus, Tanima Basu, Evan Luff, <strong>Yuwei Hu</strong>, Donglin Zeng, Chelsie Gesierich, Ken Resnicow, Predrag Klasnja, Brahmajee Nallamothu</div>
+          <div class="description">
+            Presented a longitudinal mixed-effects modeling framework to quantify time-varying associations between psychosocial constructs and physical activity in heart failure patients.
+          </div>
+          <div class="keywords">Longitudinal Modeling · Mixed-Effects Models · Temporal Dynamics · Behavioral Statistics</div>
+        </article>
+      </section>
+
+      <section id="projects">
+        <h2>Selected Projects</h2>
+
+        <article class="item">
+          <div class="item-header">
+            <div class="item-title">Geospatial Optimization of Diagnostic Networks in Ghana</div>
+            <div class="item-meta"><a href="https://github.com/bosafoagyare/Ghana-Networks-of-Practice">Code</a></div>
+          </div>
+          <div class="authors"><strong>Yuwei Hu</strong>, Schroeder F. Lee · University of Michigan Graduate Summer Internship 2024</div>
+          <div class="description">
+            Developed a geospatial network optimization framework to improve diagnostic accessibility in Ghana.
+            Formulated facility placement as a constrained network design problem and integrated OpenStreetMap travel-time data.
+          </div>
+          <div class="keywords">Global Health Systems · Network Optimization · Facility Location · Geospatial Modeling</div>
+        </article>
+
+        <article class="item">
+          <div class="item-header">
+            <div class="item-title">Synthetic Control Analysis of Policy Effects on University Admissions Trends</div>
+            <div class="item-meta">Causal Inference Research</div>
+          </div>
+          <div class="authors"><strong>Yuwei Hu</strong>, <a href="https://yuekai.github.io">Yuekai Sun</a></div>
+          <div class="description">
+            Developed a synthetic control framework to estimate policy-induced shifts in university admissions patterns.
+            Identified donor pools using agglomerative clustering and constructed weighted counterfactual trajectories under balance constraints.
+          </div>
+          <div class="keywords">Causal Inference · Synthetic Control · Policy Evaluation · Longitudinal Analysis</div>
+        </article>
+
+        <article class="item">
+          <div class="item-header">
+            <div class="item-title">Implementation and Analysis of First- and Second-Order Optimization Algorithms</div>
+            <div class="item-meta"><a href="https://github.com/YuweiHu17/IOE_511">Code</a></div>
+          </div>
+          <div class="authors"><strong>Yuwei Hu</strong> · IOE 511 Optimization Project</div>
+          <div class="description">
+            Implemented and analyzed ten first- and second-order optimization algorithms, including gradient descent, BFGS, modified Newton, and trust-region methods.
+          </div>
+          <div class="keywords">Numerical Optimization · Convergence Analysis · Line Search · Quasi-Newton Methods</div>
+        </article>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <div class="education-grid">
+          <div class="degree">
+            <div class="degree-top">
+              <div>Dartmouth College</div>
+              <div>Sep. 2025 – Present</div>
+            </div>
+            <div>PhD Student in Thayer Engineering · Hanover, NH, USA</div>
+            <div class="degree-note">Advisor: <a href="https://brycelferguson.github.io">Prof. Bryce L. Ferguson</a></div>
+          </div>
+
+          <div class="degree">
+            <div class="degree-top">
+              <div>University of Michigan</div>
+              <div>Sep. 2023 – May 2025</div>
+            </div>
+            <div>M.S. in Applied Statistics · Ann Arbor, MI, USA</div>
+            <div class="degree-note">Advisors: <a href="https://aero.engin.umich.edu/people/li-max/">Prof. Max Z. Li</a>, <a href="https://sph.umich.edu/faculty-profiles/zeng-donglin.html">Prof. Donglin Zeng</a>, <a href="https://yuekai.github.io">Prof. Yuekai Sun</a></div>
+          </div>
+
+          <div class="degree">
+            <div class="degree-top">
+              <div>Zhongnan University of Economics and Law</div>
+              <div>Sep. 2019 – Jun. 2023</div>
+            </div>
+            <div>B.Sc. in Statistics · Wuhan, China</div>
+            <div class="degree-note">Advisor: <a href="https://sme.cuhk.edu.cn/en/teacher/1235">Prof. Guangli Lu</a></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2>Work Experience</h2>
+
+        <article class="item">
+          <div class="item-header">
+            <div class="item-title">Algorithm Engineer Intern · TikTok China</div>
+            <div class="item-meta">Nov. 2022 – Mar. 2023</div>
+          </div>
+          <ul class="compact-list">
+            <li>Maintained and improved large-scale data infrastructure across distributed systems.</li>
+            <li>Enhanced recommendation model performance by refining predictive and clustering parameters using user behavior data.</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <div class="item-header">
+            <div class="item-title">Data Scientist Intern · Bridgewater Associates</div>
+            <div class="item-meta">May 2022 – Aug. 2022</div>
+          </div>
+          <ul class="compact-list">
+            <li>Developed hierarchical factor models inspired by convolutional architectures for stock volume prediction.</li>
+            <li>Improved system-level data retrieval pipelines to enhance scalability and computational efficiency.</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <div class="item-header">
+            <div class="item-title">Data Scientist Intern · Ernst &amp; Young</div>
+            <div class="item-meta">Jan. 2022 – Mar. 2022</div>
+          </div>
+          <ul class="compact-list">
+            <li>Conducted IT due diligence using MySQL-based data extraction and denoising pipelines.</li>
+            <li>Applied classification modeling and statistical analysis to evaluate user behavior and advertising performance metrics.</li>
+          </ul>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site">
+    © <span id="year"></span> Yuwei Hu. Last updated for academic use.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
